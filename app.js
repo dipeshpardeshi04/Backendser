@@ -9,7 +9,7 @@ const app = express();
 const PORT = 5000;
 let isFileReady = false; // Flag to indicate when the PDF is ready
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
