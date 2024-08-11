@@ -165,6 +165,9 @@ app.get('/pdfs', (req, res) => {
         res.status(404).json({ message: 'PDF not ready yet' });
     }
 });
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
