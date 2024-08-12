@@ -37,7 +37,7 @@ mongoose.connect(DBURL, {
 const userSchema = new mongoose.Schema({
     url: {
         type: String,
-        // required: true
+        required: true
     }
 });
 
@@ -50,6 +50,7 @@ app.post('/urll', async (req, res) => {
         let { url } = req.body;
         parts = url;
         const newUser = new URLModel({ url });
+      console.log(parts);
         await newUser.save();
 
         // Reset the file ready flag
