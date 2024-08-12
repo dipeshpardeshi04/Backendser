@@ -62,7 +62,7 @@ app.post('/urll', async (req, res) => {
         // Generate PDF asynchronously
         (async () => {
             const browser = await puppeteer.launch({ headless: true, 
-                                                    executablePath:executablePath(),
+                                                    // executablePath:executablePath(),
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
                                                     //   "--no-sandbox",
@@ -172,6 +172,8 @@ app.post('/urll', async (req, res) => {
 
 // Route to check if the PDF is ready
 app.get('/status', (req, res) => {
+
+  console.log(" Status seen !!!!!!!!!!!!!!!");
     res.json({ isFileReady });
 });
 
