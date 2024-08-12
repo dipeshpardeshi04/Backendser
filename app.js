@@ -51,6 +51,7 @@ app.post('/urll', async (req, res) => {
         let { url } = req.body;
         parts = url;
         const newUser = new URLModel({ url });
+      console.log("uuuuuuurrrrrrrlllllllllll:::");
       console.log(parts);
         await newUser.save();
 
