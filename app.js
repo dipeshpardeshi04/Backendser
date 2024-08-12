@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
@@ -16,7 +17,7 @@ app.use(cors({
   origin: 'https://chatopdf.netlify.app' // Replace with your Netlify domain
 }));
 // MongoDB connection
-require('dotenv').config();
+
 
 // Now you can access the variables in process.env
 console.log(process.env.DATABASE_URL); // Output: your_api_key_here
@@ -58,10 +59,18 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: true,executablePath:
-      process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(), });
+            const browser = await puppeteer.launch({ headless: true,  
+                                                    args: [
+                                                      "--disable-setuid-sandbox",
+                                                      "--no-sandbox",
+                                                      "--single-process",
+                                                      "--no-zygote",
+                                                    ],
+                                                    executablePath:
+                                                            process.env.NODE_ENV === "production"
+                                                              ? process.env.PUPPETEER_EXECUTABLE_PATH
+                                                              : puppeteer.executablePath(),
+                            });
             const page = await browser.newPage();
             await page.goto(url, { waitUntil: 'networkidle2' });
 
