@@ -58,7 +58,10 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: true });
+            const browser = await puppeteer.launch({ headless: true,executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(), });
             const page = await browser.newPage();
             await page.goto(url, { waitUntil: 'networkidle2' });
 
