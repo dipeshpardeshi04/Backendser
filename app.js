@@ -59,8 +59,8 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: false, 
-                                                    // executablePath:executablePath(),
+            const browser = await puppeteer.launch({ headless: true, 
+                                                    executablePath: '/usr/bin/google-chrome-stable',
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
                                                     //   "--no-sandbox",
