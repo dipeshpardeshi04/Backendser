@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const puppeteer = require('puppeteer');
+const {executablePath} = require('puppeteer');
 const fs = require('fs');
 require('dotenv').config();
 
@@ -60,7 +61,8 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: true,  
+            const browser = await puppeteer.launch({ headless: true, 
+                                                    executablePath:executablePath(),
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
                                                     //   "--no-sandbox",
