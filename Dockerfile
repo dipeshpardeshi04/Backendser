@@ -28,23 +28,13 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
   && apt-get -f install -y
 
 # Set up Puppeteer and other dependencies
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
 COPY . .
 
 # Start the application
 CMD ["node", "app.js"]
-
-
-
-
-
-
-
-
-
-
 
 
 
