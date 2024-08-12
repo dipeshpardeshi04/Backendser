@@ -7,7 +7,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5000;
+const PORT = 4000;
 let isFileReady = false; // Flag to indicate when the PDF is ready
 
 // app.use(cors());
@@ -22,8 +22,8 @@ app.use(cors({
 // Now you can access the variables in process.env
 console.log(process.env.DATABASE_URL); // Output: your_api_key_here
 console.log(process.env.PORT); // Output: localhost
-const DBURL = process.env.DATABASE_URL || 4000;
-const port = process.env.PORT;
+const DBURL = process.env.DATABASE_URL;
+const port = process.env.PORT || 4000;
 
 mongoose.connect(DBURL, {
   useNewUrlParser: true,
