@@ -22,7 +22,7 @@ app.use(cors({
 // Now you can access the variables in process.env
 console.log(process.env.DATABASE_URL); // Output: your_api_key_here
 console.log(process.env.PORT); // Output: localhost
-const DBURL = process.env.DATABASE_URL;
+const DBURL = process.env.DATABASE_URL || 4000;
 const port = process.env.PORT;
 
 mongoose.connect(DBURL, {
