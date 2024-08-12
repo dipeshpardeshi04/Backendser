@@ -59,7 +59,7 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: true, 
+            const browser = await puppeteer.launch({ headless: false, 
                                                     // executablePath:executablePath(),
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
