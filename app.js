@@ -14,7 +14,7 @@ let isFileReady = false; // Flag to indicate when the PDF is ready
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-  origin: '*' // Replace with your Netlify domain
+  origin: 'https://chatopdf.netlify.app' // Replace with your Netlify domain
 }));
 // MongoDB connection
 
