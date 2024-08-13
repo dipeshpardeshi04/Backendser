@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const puppeteer = require('puppeteer');
-const {executablePath} = require('puppeteer');
+// const {executablePath} = require('puppeteer');
 const fs = require('fs');
 require('dotenv').config();
 const executablePath = 'C:\Program Files\Google\Chrome\Application\chrome.exe';
