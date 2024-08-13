@@ -16,6 +16,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
   origin: 'https://chatopdf.netlify.app', // Replace with your frontend origin
+  methods: ['GET', 'POST'], // Specify allowed methods if needed
+  allowedHeaders: ['Content-Type']
 }));
 // MongoDB connection
 
