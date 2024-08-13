@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 const {executablePath} = require('puppeteer');
 const fs = require('fs');
 require('dotenv').config();
-
+const executablePath = 'C:\Program Files\Google\Chrome\Application\chrome.exe';
 const app = express();
 const PORT = 4000;
 let isFileReady = false; // Flag to indicate when the PDF is ready
@@ -59,8 +59,9 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
-            const browser = await puppeteer.launch({ headless: true, 
-                                                    executablePath: '/usr/bin/google-chrome-stable',
+            const browser = await puppeteer.launch({ executablePath: executablePath,
+                                                      headless: true,
+                                                      args: ['--no-sandbox', '--disable-setuid-sandbox']
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
                                                     //   "--no-sandbox",
