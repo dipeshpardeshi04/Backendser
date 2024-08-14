@@ -29,8 +29,8 @@ const DBURL = process.env.DATABASE_URL;
 const port = process.env.PORT || 4000;
 
 mongoose.connect(DBURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 }).then(() => {
   console.log('Connected to MongoDB');
 }).catch((error) => {
