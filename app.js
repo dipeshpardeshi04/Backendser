@@ -63,6 +63,8 @@ app.post('/urll', async (req, res) => {
 
         // Generate PDF asynchronously
         (async () => {
+          try{
+            console.log("Before launch");
             const browser = await puppeteer.launch({ executablePath: executablePath,
                                                       headless: true,
                                                       args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -77,6 +79,7 @@ app.post('/urll', async (req, res) => {
                                                     //           ? process.env.PUPPETEER_EXECUTABLE_PATH
                                                     //           : puppeteer.executablePath(),
                             });
+            console.log("After launch");
             const page = await browser.newPage();
             await page.goto(url, { waitUntil: 'networkidle2' });
 
@@ -169,6 +172,9 @@ app.post('/urll', async (req, res) => {
 
             await browser.close();
             console.log("Browser Closed !");
+          }catch{
+            console.log("Errrrrrro in pdf gen Fun !");
+          }
         })();
         console.log("Response Sended for pdf processing !");
         res.status(200).json({ message: 'URL submitted, processing PDF.' });
