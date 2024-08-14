@@ -82,14 +82,17 @@ app.post('/urll', async (req, res) => {
 
             try {
                 await page.waitForSelector('.relative.max-w-\\[70\\%\\]', { timeout: 60000 });
+                console.log("page selected!");
 
                 const questions = await page.evaluate(() => {
                     const textElements = document.querySelectorAll('div.relative.max-w-\\[70\\%\\]');
+                    console.log("page Evaluated !");
                     return Array.from(textElements).map(element => element.querySelector('div').innerText);
                 });
 
                 const answers = await page.evaluate(() => {
                     const answerElements = document.querySelectorAll('.markdown.prose.w-full.break-words.dark\\:prose-invert.dark');
+                    console.log("main page Evaluated !");
                     return Array.from(answerElements).map(element => element.innerHTML);
                 });
 
@@ -151,6 +154,7 @@ app.post('/urll', async (req, res) => {
     `;
 
                 await page.setContent(htmlContent);
+                console.log("Content geting");
                 await page.pdf({
                     path: `${parts.split("/")[4]}.pdf`, // Path to save the PDF
                     format: 'A4',
@@ -160,15 +164,17 @@ app.post('/urll', async (req, res) => {
                 console.log('PDF created successfully.');
                 isFileReady = true; // Set flag to true when the file is ready
             } catch (error) {
-                console.error('Error:', error.message);
+                console.error('Error for this :', error.message);
             }
 
             await browser.close();
+            console.log("Browser Closed !");
         })();
-
+        console.log("Response Sended for pdf processing !");
         res.status(200).json({ message: 'URL submitted, processing PDF.' });
     } catch (error) {
         res.status(400).json({ message: error.message });
+        console.log("Errors in the pdf processing !");
         console.log(error);
     }
 });
@@ -183,8 +189,10 @@ app.get('/status', (req, res) => {
 // Route to download the PDF
 app.get('/pdfs', (req, res) => {
     if (isFileReady) {
+        console.log(" File is Ready /pdfs !");
         res.download(`./${parts.split("/")[4]}.pdf`);
     } else {
+        console.log("Error in /pdfs ");
         res.status(404).json({ message: 'PDF not ready yet' });
     }
 });
