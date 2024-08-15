@@ -66,7 +66,7 @@ app.post('/urll', async (req, res) => {
           try{
             console.log("Before launch");
             const browser = await puppeteer.launch({ 
-                                                      // executablePath: executablePath,
+                                                      executablePath: executablePath,
                                                       headless: true,
                                                       args: ['--no-sandbox', '--disable-setuid-sandbox']
                                                     // args: [
