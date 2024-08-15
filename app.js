@@ -68,7 +68,7 @@ app.post('/urll', async (req, res) => {
             const browser = await puppeteer.launch({ 
                                                       executablePath: executablePath,
                                                       headless: true,
-                                                      args: ['--no-sandbox', '--disable-setuid-sandbox']
+                                                      args: ['--no-sandbox', '--disable-setuid-sandbox'],
                                                     // args: [
                                                     //   "--disable-setuid-sandbox",
                                                     //   "--no-sandbox",
